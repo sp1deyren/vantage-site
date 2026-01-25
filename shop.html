@@ -4,138 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vantage | Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent: #BD00FF;
-            --accent-glow: rgba(189, 0, 255, 0.5);
+            --accent-glow: rgba(189, 0, 255, 0.4);
             --bg: #050505;
             --text: #ffffff;
             --text-muted: #888;
-            --card-bg: rgba(20, 20, 25, 0.6);
-            --border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
         body {
             background-color: var(--bg);
             background-image: radial-gradient(circle at 50% 0%, #1a0b2e 0%, #000 80%);
             color: var(--text);
             min-height: 100vh;
-            display: flex; /* Helps keep footer at bottom */
+            display: flex;
             flex-direction: column;
-            overflow-x: hidden;
         }
 
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 40px; border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(12px); background: rgba(0,0,0,0.3);
+            padding: 25px 50px; border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px); background: rgba(0,0,0,0.4);
             position: fixed; width: 100%; top: 0; z-index: 1000;
         }
 
-        .logo { font-weight: 900; font-size: 18px; letter-spacing: 2px; color: #fff; text-decoration: none; }
+        .logo { font-weight: 900; font-size: 22px; color: #fff; text-decoration: none; }
         .logo span { color: var(--accent); }
 
         .nav-links a {
-            text-decoration: none; color: var(--text-muted); margin-left: 30px; 
-            font-size: 14px; font-weight: 500; transition: 0.2s;
+            text-decoration: none; color: var(--text-muted); margin-left: 35px; font-size: 15px; transition: 0.3s;
         }
-        .nav-links a:hover, .nav-links a.active { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
 
-        .btn-nav {
-            border: 1px solid var(--border); padding: 8px 20px; border-radius: 4px;
-            background: rgba(255,255,255,0.05); color: #fff !important;
-        }
-        .btn-nav:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-
-        /* SHOP GRID */
         .shop-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
-            max-width: 1000px; margin: 140px auto 100px; /* Increased margin-bottom */
-            padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;
+            max-width: 1100px; margin: 160px auto 80px; padding: 0 20px;
             flex-grow: 1; /* Pushes footer down */
         }
 
         .product-card {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
-            padding: 30px; text-align: left; transition: 0.3s; position: relative; overflow: hidden;
-            height: fit-content;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px;
+            padding: 40px; text-align: left; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; backdrop-filter: blur(10px);
         }
-        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .product-card:hover { border-color: var(--accent); transform: translateY(-10px); background: rgba(255,255,255,0.05); }
 
         .tag {
-            background: rgba(189,0,255,0.1); color: var(--accent); padding: 4px 10px; 
-            border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; 
-            margin-bottom: 15px; display: inline-block; border: 1px solid rgba(189,0,255,0.2);
+            background: rgba(189,0,255,0.1); color: var(--accent); padding: 5px 12px; 
+            border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; 
+            margin-bottom: 20px; display: inline-block; border: 1px solid rgba(189,0,255,0.2);
         }
-        .price { font-size: 32px; font-weight: 900; margin: 10px 0; display: block; }
-        .desc { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; min-height: 40px; }
+
+        h2 { font-size: 28px; margin-bottom: 10px; font-weight: 900; }
+        .price { font-size: 38px; font-weight: 900; margin-bottom: 15px; display: block; color: var(--accent); }
+        .desc { color: var(--text-muted); font-size: 15px; margin-bottom: 30px; line-height: 1.6; font-weight: 300; }
+
+        ul { list-style: none; margin-bottom: 35px; }
+        ul li { color: #ccc; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; }
+        ul li::before { content: '✓'; color: var(--accent); margin-right: 10px; font-weight: bold; }
 
         .btn-buy {
-            width: 100%; display: block; text-align: center; padding: 12px; 
-            background: #fff; color: #000; font-weight: 700; text-decoration: none; border-radius: 6px;
-            transition: 0.2s;
+            width: 100%; display: block; text-align: center; padding: 18px; 
+            background: #fff; color: #000; font-weight: 900; text-decoration: none; border-radius: 12px;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-buy:hover { background: var(--accent); color: #fff; }
+        .btn-buy:hover { background: var(--accent); color: #fff; box-shadow: 0 0 30px var(--accent-glow); }
 
-        /* FOOTER FIX */
         footer { 
-            text-align: center; 
-            padding: 60px 40px; 
-            color: #444; 
-            font-size: 12px; 
-            border-top: 1px solid var(--border);
-            width: 100%;
-            background: rgba(0,0,0,0.2);
+            text-align: center; padding: 60px 40px; color: #333; font-size: 13px; 
+            border-top: 1px solid var(--border); background: rgba(0,0,0,0.3); width: 100%;
         }
     </style>
 </head>
 <body>
-
     <nav>
-        <a href="index.html" class="logo">VANTAGE <span>ULTRA</span></a>
+        <a href="index.html" class="logo">VANTAGE<span>.</span></a>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="shop.html" class="active">Shop Products</a>
-            <a href="#" target="_blank" class="btn-nav">Join Discord</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="#" class="btn-nav">Discord</a>
         </div>
     </nav>
 
     <section class="shop-grid">
-        
-        <div class="product-card" style="border-color: rgba(189,0,255,0.3);">
-            <span class="tag">Software</span>
+        <div class="product-card">
+            <span class="tag">Utility</span>
             <h2>Vantage Crosshair</h2>
             <span class="price">$4.99</span>
-            <p class="desc">The pixel-perfect overlay editor. Draw custom sights, adjust zeroing, and dominate with zero latency.</p>
-            <ul style="color:#888; font-size:13px; margin-bottom:20px; padding-left:20px; line-height:1.6;">
-                <li>Pixel Painting Engine</li>
-                <li>Glassmorphism UI</li>
-                <li>Low CPU Usage</li>
+            <p class="desc">Pixel-perfect overlay engine. Create custom sights that stay on top of any game with zero input delay.</p>
+            <ul>
+                <li>Custom Creator Suite</li>
+                <li>Zero Latency Overlay</li>
+                <li>Multiple Preset Slots</li>
             </ul>
-            <a href="#" class="btn-buy" style="background: var(--accent); color: white;">Buy License</a>
+            <a href="#" class="btn-buy">Get Access</a>
         </div>
 
-        <div class="product-card" style="border-color: rgba(189,0,255,0.3);">
-            <span class="tag">Optimization Pack</span>
+        <div class="product-card" style="border-color: rgba(189,0,255,0.2);">
+            <span class="tag">Optimization</span>
             <h2>Vantage Tweaks</h2>
             <span class="price">$9.99</span>
-            <p class="desc">Exclusive registry edits and network optimizations to lower system latency and hitreg delay.</p>
-            <ul style="color:#888; font-size:13px; margin-bottom:20px; padding-left:20px; line-height:1.6;">
-                <li>Network Throttling Fix</li>
-                <li>Mouse Input Latency Fix</li>
-                <li>FPS Boost Configs</li>
+            <p class="desc">The ultimate system optimization pack. Reduce system interrupts and stabilize your frametime.</p>
+            <ul>
+                <li>Advanced Registry Edits</li>
+                <li>Network Latency Fixes</li>
+                <li>Power Plan Optimization</li>
             </ul>
-            <a href="#" class="btn-buy" style="background: var(--accent); color: white;">Buy License</a>
+            <a href="#" class="btn-buy" style="background: var(--accent); color: #fff;">Buy License</a>
         </div>
-
     </section>
 
     <footer>
         © 2026 Vantage Project. All Rights Reserved. <br>
-        <span style="opacity: 0.5; margin-top: 10px; display: block;">Secure Payments via Stripe.</span>
+        <span style="opacity: 0.4; margin-top: 8px; display: block;">High Performance Gaming Solutions</span>
     </footer>
-
 </body>
 </html>
