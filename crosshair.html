@@ -6,13 +6,7 @@
     <title>Vantage | Crosshair Ultra</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;900&display=swap" rel="stylesheet">
     <style>
-        /* ICON UTILITY */
-        .icon {
-            display: inline-block; vertical-align: middle; margin-right: 8px;
-            height: 1.2em; width: 1.2em; fill: currentColor;
-        }
-
-        /* THEME VARIABLES (MATCHING YOUR INDEX) */
+        /* --- GLOBAL THEME (MATCHING INDEX) --- */
         :root {
             --accent: #BD00FF;
             --accent2: #2a2236;
@@ -21,8 +15,8 @@
             --text: #fff;
             --text-muted: #b6a7c9;
             --border: rgba(189, 0, 255, 0.10);
-            --card-bg: rgba(255, 255, 255, 0.02);
             --footer-bg: linear-gradient(90deg, #21192b 0%, #2a2236 100%);
+            --card-bg: rgba(255, 255, 255, 0.02);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
@@ -36,14 +30,14 @@
             overflow-x: hidden;
         }
 
-        /* MOUSE GLOW EFFECT */
+        /* Mouse Glow */
         body::before {
             content: ''; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
             background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(189,0,255,0.05) 0%, transparent 60%);
             pointer-events: none; z-index: 0; transition: background 0.3s;
         }
 
-        /* NAVIGATION */
+        /* --- NAVIGATION --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 25px 50px; border-bottom: 1px solid var(--border);
@@ -54,6 +48,8 @@
 
         .logo { font-weight: 900; font-size: 32px; color: #fff; text-decoration: none; letter-spacing: 2px; text-shadow: 0 2px 16px #bd00ff33; }
         .logo span { color: var(--accent); filter: drop-shadow(0 0 8px #bd00ff44); }
+
+        .icon { display: inline-block; vertical-align: middle; margin-right: 8px; height: 1.2em; width: 1.2em; fill: currentColor; }
 
         .nav-links a {
             text-decoration: none; color: var(--text-muted); margin-left: 35px; 
@@ -68,14 +64,14 @@
         }
         .btn-nav:hover { background: rgba(189,0,255,0.10); border-color: #BD00FF; color: var(--accent) !important; }
 
-        /* PRODUCT LAYOUT */
+        /* --- PRODUCT SPECIFIC STYLES --- */
         .product-container {
             max-width: 1200px; margin: 160px auto 100px; padding: 0 40px;
             display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
             align-items: start; position: relative; z-index: 1;
         }
 
-        /* GALLERY (LEFT) */
+        /* Gallery */
         .image-gallery { display: flex; flex-direction: column; gap: 20px; }
         .main-image {
             width: 100%; height: 400px; background: rgba(0,0,0,0.3); border-radius: 20px;
@@ -89,20 +85,20 @@
             height: 100px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid var(--border);
             cursor: pointer; transition: 0.3s;
         }
-        .thumb:hover { border-color: var(--accent); box-shadow: var(--accent-glow); }
+        .thumb:hover { border-color: var(--accent); box-shadow: 0 0 15px rgba(189,0,255,0.2); }
 
-        /* INFO (RIGHT) */
+        /* Info Section */
         h1 {
             font-size: 50px; line-height: 1; font-weight: 900; letter-spacing: -2px;
             background: linear-gradient(90deg, #fff 40%, #BD00FF 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 10px; text-shadow: 0 2px 32px #bd00ff22;
         }
 
         .price { font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 30px; display: block; text-shadow: 0 0 20px rgba(189,0,255,0.3); }
-        .description { color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; font-size: 17px; font-weight: 300; }
+        .description { color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; font-size: 17px; font-weight: 300; text-shadow: 0 2px 16px #bd00ff11; }
 
-        .feature-list { margin-bottom: 40px; }
+        /* Features */
         .feature-item { 
             display: flex; align-items: center; margin-bottom: 15px; 
             padding: 15px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
@@ -113,30 +109,26 @@
         .icon-box { 
             width: 40px; height: 40px; background: rgba(189,0,255,0.1); border-radius: 8px;
             display: flex; align-items: center; justify-content: center; margin-right: 15px;
-            color: var(--accent); font-weight: bold; font-size: 22px;
+            color: var(--accent);
         }
-        .icon-box .icon {
-            margin-right: 0;
-            display: block;
-            height: 1.5em;
-            width: 1.5em;
-        }
-        }
+        .icon-box svg { width: 20px; height: 20px; }
 
-        /* BUY BUTTON (MATCHING INDEX) */
+        /* Buy Button (Using exact styles from index) */
         .btn-buy {
             background: linear-gradient(90deg, #BD00FF 0%, #2a2236 100%);
-            color: #fff; width: 100%; padding: 22px; border-radius: 14px;
-            text-decoration: none; font-weight: 900; font-size: 20px; text-align: center;
+            color: #fff; width: 100%; padding: 22px; border-radius: 18px;
+            text-decoration: none; font-weight: 900; font-size: 22px; text-align: center;
             box-shadow: var(--accent-glow); display: block; letter-spacing: 2px;
-            transition: transform 0.18s, box-shadow 0.18s, filter 0.15s;
+            transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.18s, filter 0.15s;
+            border: none;
         }
         .btn-buy:hover {
-            transform: scale(1.02) translateY(-1px);
-            box-shadow: 0 0 30px 0 rgba(189,0,255,0.4);
-            filter: brightness(1.1);
+            transform: scale(1.03) translateY(-1px);
+            box-shadow: 0 0 24px 0 #bd00ff33;
+            filter: brightness(1.07) saturate(1.08);
         }
 
+        /* --- FOOTER --- */
         footer {
             width: 100%; text-align: center; color: #b6a7c9; font-size: 15px;
             letter-spacing: 1px; margin-top: auto; border-top: 1px solid var(--border);
@@ -184,48 +176,35 @@
         </div>
 
         <div class="product-info">
-            <h1>VANTAGE CROSSHAIR</h1>
+            <h1>VANTAGE SIGHT</h1>
             <span class="price">$4.99</span>
             <p class="description">
-                Vantage Crosshair is a lightweight, customizable overlay for gamers who want a better, more personal crosshair—no tape or stickers needed!<br><br>
+                Vantage Sight is a lightweight, customizable overlay for gamers who want a better, more personal crosshair—no tape or stickers needed!<br><br>
                 <b>Fun fact:</b> Many players find that a smaller, well-designed crosshair can help improve aim and focus. Plus, it just looks awesome.
             </p>
 
             <div class="feature-list">
                 <div class="feature-item">
                     <div class="icon-box">
-                        <svg class="icon" viewBox="0 0 20 20"><path d="M10 2v16m8-8H2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M10 2v16m8-8H2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
                     </div>
                     <div>
                         <strong style="display:block; color:#fff">No Lag</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Runs ultra-smooth and won't slow down your PC or games—ever.</span>
+                        <span style="font-size:13px; color:var(--text-muted)">Runs ultra-smooth and won't slow down your PC.</span>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="icon-box">
-                        <svg class="icon" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
+                        <svg viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
                     </div>
                     <div>
                         <strong style="display:block; color:#fff">Fully Customizable</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Design your crosshair pixel-by-pixel, use shapes, colors, and more. Make it truly yours.</span>
+                        <span style="font-size:13px; color:var(--text-muted)">Design your crosshair pixel-by-pixel.</span>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="icon-box">
-                        <svg class="icon" viewBox="0 0 20 20"><path d="M4 4h12v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h6v6H7z" fill="currentColor"/></svg>
-                    </div>
-                    <div>
-                        <strong style="display:block; color:#fff">Stream & Record Friendly</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Your crosshair won't show up in most game captures or recordings (when only the game is selected). Perfect for content creators and streamers.</span>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="icon-box">
-                        <svg class="icon" viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0.001 16.001A8 8 0 0 0 10 2zm0 3a5 5 0 1 1 0 10A5 5 0 0 1 10 5z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="2" fill="currentColor"/></svg>
-                    </div>
-                    <div>
-                        <strong style="display:block; color:#fff">Looks Awesome</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">A clean, modern overlay that adds style to your setup—just pure gamer vibes.</span>
+                        <svg viewBox="0 0 20 20"><path d="M4 4h12v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h6v6H7z" fill="currentColor"/></svg>
                     </div>
                 </div>
             </div>
@@ -241,7 +220,7 @@
     <footer>© 2026 Vantage Project. All Rights Reserved.</footer>
 
     <script>
-        // Mouse follow effect matching your Home page
+        // Mouse follow effect
         document.addEventListener('mousemove', e => {
             document.body.style.setProperty('--x', e.clientX + 'px');
             document.body.style.setProperty('--y', e.clientY + 'px');
