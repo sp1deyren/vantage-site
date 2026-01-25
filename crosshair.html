@@ -102,9 +102,13 @@
         .description { color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; font-size: 17px; font-weight: 300; }
 
         .feature-list { margin-bottom: 40px; }
-        .feature-item { 
-            display: flex; align-items: center; margin-bottom: 15px; 
-            padding: 15px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            height: 1.2em;
+            width: 1.2em;
+            fill: currentColor;
             transition: 0.3s;
         }
         .feature-item:hover { border-color: rgba(189,0,255,0.3); background: rgba(189,0,255,0.05); }
@@ -154,7 +158,7 @@
     <nav>
         <a href="index.html" class="logo">VANTAGE<span>.</span></a>
         <div class="nav-links">
-            <a href="index.html">
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(189,0,255,0.08); text-shadow: 0 0 10px #bd00ff44; }
                 <span class="icon" aria-hidden="true">
                     <svg viewBox="0 0 20 20"><path d="M10 2 2 7v11h5v-5h6v5h5V7z"/></svg>
                 </span>Home
