@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantage | Dominate Every Pixel</title>
+    <style>
+        /* VANTAGE ULTRA THEME */
+        :root {
+            --accent: #BD00FF;
+            --accent-glow: rgba(189, 0, 255, 0.5);
+            --bg: #050505;
+            --text: #ffffff;
+            --text-muted: #888;
+            --card-bg: rgba(20, 20, 25, 0.6);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% 0%, #1a0b2e 0%, #000 80%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px); background: rgba(0,0,0,0.3);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+        }
+
+        .logo { font-weight: 900; font-size: 18px; letter-spacing: 2px; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent); }
+
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted); margin-left: 30px; 
+            font-size: 14px; font-weight: 500; transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
+
+        .btn-nav {
+            border: 1px solid var(--border); padding: 8px 20px; border-radius: 4px;
+            background: rgba(255,255,255,0.05); color: #fff !important;
+        }
+        .btn-nav:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+        /* HERO SECTION */
+        .hero {
+            height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 0 20px; margin-top: 40px;
+        }
+
+        .tag {
+            background: rgba(189,0,255,0.1); color: var(--accent); padding: 6px 14px; 
+            border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; 
+            margin-bottom: 25px; border: 1px solid rgba(189,0,255,0.2);
+        }
+
+        h1 {
+            font-size: 80px; line-height: 1.1; font-weight: 900; letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .subtitle { color: var(--text-muted); font-size: 20px; max-width: 600px; margin-bottom: 40px; line-height: 1.6; }
+
+        /* BUTTONS */
+        .btn-primary {
+            background: var(--accent); color: #000; padding: 16px 48px; border-radius: 6px;
+            text-decoration: none; font-weight: 700; font-size: 16px; display: inline-block;
+            box-shadow: 0 0 40px var(--accent-glow); transition: 0.2s; border: none; cursor: pointer;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px var(--accent-glow); background: #d940ff; }
+
+        footer { text-align: center; padding: 40px; color: #444; font-size: 12px; margin-top: 60px; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">VANTAGE <span>ULTRA</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="shop.html">Shop Products</a>
+            <a href="#" target="_blank" class="btn-nav">Join Discord</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="tag">V1.0 NOW AVAILABLE</div>
+        <h1>PRECISION<br>REDEFINED.</h1>
+        <p class="subtitle">The undetectable, high-performance overlay suite for competitive play. Zero input lag. Infinite customization.</p>
+        
+        <div style="display: flex; gap: 15px;">
+            <a href="shop.html" class="btn-primary">Go to Shop</a>
+        </div>
+    </header>
+
+    <footer>
+        © 2026 Vantage Project. Built for Professionals.
+    </footer>
+
+</body>
+</html>

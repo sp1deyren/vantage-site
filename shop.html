@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantage | Shop</title>
+    <style>
+        /* SAME THEME FOR CONSISTENCY */
+        :root {
+            --accent: #BD00FF;
+            --accent-glow: rgba(189, 0, 255, 0.5);
+            --bg: #050505;
+            --text: #ffffff;
+            --text-muted: #888;
+            --card-bg: rgba(20, 20, 25, 0.6);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% 0%, #1a0b2e 0%, #000 80%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px); background: rgba(0,0,0,0.3);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+        }
+
+        .logo { font-weight: 900; font-size: 18px; letter-spacing: 2px; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent); }
+
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted); margin-left: 30px; 
+            font-size: 14px; font-weight: 500; transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
+
+        .btn-nav {
+            border: 1px solid var(--border); padding: 8px 20px; border-radius: 4px;
+            background: rgba(255,255,255,0.05); color: #fff !important;
+        }
+        .btn-nav:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+        /* SHOP SPECIFIC STYLES */
+        .shop-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+            max-width: 1000px; margin: 120px auto 60px; padding: 0 20px;
+        }
+
+        .product-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+            padding: 30px; text-align: left; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+        /* Glow effect */
+        .product-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(189,0,255,0.1), transparent 60%);
+            opacity: 0; transition: 0.3s; pointer-events: none;
+        }
+        .product-card:hover::before { opacity: 1; }
+
+        .tag {
+            background: rgba(189,0,255,0.1); color: var(--accent); padding: 4px 10px; 
+            border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; 
+            margin-bottom: 15px; display: inline-block; border: 1px solid rgba(189,0,255,0.2);
+        }
+        .price { font-size: 32px; font-weight: 900; margin: 10px 0; display: block; }
+        .desc { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; min-height: 40px; }
+
+        .btn-buy {
+            width: 100%; display: block; text-align: center; padding: 12px; 
+            background: #fff; color: #000; font-weight: 700; text-decoration: none; border-radius: 6px;
+            transition: 0.2s;
+        }
+        .btn-buy:hover { background: var(--accent); color: #fff; }
+
+        footer { text-align: center; padding: 40px; color: #444; font-size: 12px; margin-top: 60px; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">VANTAGE <span>ULTRA</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop Products</a>
+            <a href="#" target="_blank" class="btn-nav">Join Discord</a>
+        </div>
+    </nav>
+
+    <section class="shop-grid">
+        
+        <div class="product-card">
+            <span class="tag">Software</span>
+            <h2>Vantage Crosshair</h2>
+            <span class="price">Free</span>
+            <p class="desc">The pixel-perfect overlay editor. Draw custom sights, adjust zeroing, and dominate with zero latency.</p>
+            <ul style="color:#888; font-size:13px; margin-bottom:20px; padding-left:20px; line-height:1.6;">
+                <li>Pixel Painting Engine</li>
+                <li>Glassmorphism UI</li>
+                <li>Low CPU Usage</li>
+            </ul>
+            <a href="https://github.com/yourusername/vantage/releases" class="btn-buy">Download Now</a>
+        </div>
+
+        <div class="product-card" style="border-color: rgba(189,0,255,0.3);">
+            <span class="tag">Optimization Pack</span>
+            <h2>Vantage Tweaks</h2>
+            <span class="price">$5.00</span>
+            <p class="desc">Exclusive registry edits and network optimizations to lower system latency and hitreg delay.</p>
+            <ul style="color:#888; font-size:13px; margin-bottom:20px; padding-left:20px; line-height:1.6;">
+                <li>Network Throttling Fix</li>
+                <li>Mouse Input Latency Fix</li>
+                <li>FPS Boost Configs</li>
+            </ul>
+            <a href="#" class="btn-buy" style="background: var(--accent); color: white;">Buy License</a>
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Vantage Project. Secure Payments via Stripe.
+    </footer>
+
+</body>
+</html>
