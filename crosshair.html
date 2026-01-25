@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantage | Crosshair Ultra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;900&display=swap" rel="stylesheet">
+    <style>
+        /* ICON UTILITY */
+        .icon {
+            display: inline-block; vertical-align: middle; margin-right: 8px;
+            height: 1.2em; width: 1.2em; fill: currentColor;
+        }
+
+        /* THEME VARIABLES (MATCHING YOUR INDEX) */
+        :root {
+            --accent: #BD00FF;
+            --accent2: #2a2236;
+            --accent-glow: 0 0 18px 2px rgba(189, 0, 255, 0.13);
+            --bg: #18141f;
+            --text: #fff;
+            --text-muted: #b6a7c9;
+            --border: rgba(189, 0, 255, 0.10);
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --footer-bg: linear-gradient(90deg, #21192b 0%, #2a2236 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+        body {
+            background: radial-gradient(circle at 50% 0%, #2a2236 0%, #18141f 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* MOUSE GLOW EFFECT */
+        body::before {
+            content: ''; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(189,0,255,0.05) 0%, transparent 60%);
+            pointer-events: none; z-index: 0; transition: background 0.3s;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 50px; border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px); background: rgba(42,34,54,0.85);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 4px 32px 0 rgba(189,0,255,0.04);
+        }
+
+        .logo { font-weight: 900; font-size: 32px; color: #fff; text-decoration: none; letter-spacing: 2px; text-shadow: 0 2px 16px #bd00ff33; }
+        .logo span { color: var(--accent); filter: drop-shadow(0 0 8px #bd00ff44); }
+
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted); margin-left: 35px; 
+            font-size: 16px; font-weight: 500; transition: 0.3s;
+            border-radius: 8px; padding: 8px 18px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(189,0,255,0.08); text-shadow: 0 0 10px #bd00ff44; }
+
+        .btn-nav {
+            border: 1px solid var(--border); padding: 8px 20px; border-radius: 8px; color: #fff !important; text-decoration: none;
+            background: rgba(255,255,255,0.03); margin-left: 35px; font-weight: 700; transition: 0.2s;
+        }
+        .btn-nav:hover { background: rgba(189,0,255,0.10); border-color: #BD00FF; color: var(--accent) !important; }
+
+        /* PRODUCT LAYOUT */
+        .product-container {
+            max-width: 1200px; margin: 160px auto 100px; padding: 0 40px;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
+            align-items: start; position: relative; z-index: 1;
+        }
+
+        /* GALLERY (LEFT) */
+        .image-gallery { display: flex; flex-direction: column; gap: 20px; }
+        .main-image {
+            width: 100%; height: 400px; background: rgba(0,0,0,0.3); border-radius: 20px;
+            border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative; box-shadow: 0 4px 32px 0 rgba(0,0,0,0.2);
+        }
+        .main-image::after { content: 'Main Gameplay Photo'; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; }
+
+        .thumbnail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .thumb {
+            height: 100px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid var(--border);
+            cursor: pointer; transition: 0.3s;
+        }
+        .thumb:hover { border-color: var(--accent); box-shadow: var(--accent-glow); }
+
+        /* INFO (RIGHT) */
+        h1 {
+            font-size: 50px; line-height: 1; font-weight: 900; letter-spacing: -2px;
+            background: linear-gradient(90deg, #fff 40%, #BD00FF 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .price { font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 30px; display: block; text-shadow: 0 0 20px rgba(189,0,255,0.3); }
+        .description { color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; font-size: 17px; font-weight: 300; }
+
+        .feature-list { margin-bottom: 40px; }
+        .feature-item { 
+            display: flex; align-items: center; margin-bottom: 15px; 
+            padding: 15px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .feature-item:hover { border-color: rgba(189,0,255,0.3); background: rgba(189,0,255,0.05); }
+
+        .icon-box { 
+            width: 40px; height: 40px; background: rgba(189,0,255,0.1); border-radius: 8px; 
+            display: flex; align-items: center; justify-content: center; margin-right: 15px;
+            color: var(--accent); font-weight: bold; font-size: 20px;
+        }
+
+        /* BUY BUTTON (MATCHING INDEX) */
+        .btn-buy {
+            background: linear-gradient(90deg, #BD00FF 0%, #2a2236 100%);
+            color: #fff; width: 100%; padding: 22px; border-radius: 14px;
+            text-decoration: none; font-weight: 900; font-size: 20px; text-align: center;
+            box-shadow: var(--accent-glow); display: block; letter-spacing: 2px;
+            transition: transform 0.18s, box-shadow 0.18s, filter 0.15s;
+        }
+        .btn-buy:hover {
+            transform: scale(1.02) translateY(-1px);
+            box-shadow: 0 0 30px 0 rgba(189,0,255,0.4);
+            filter: brightness(1.1);
+        }
+
+        footer {
+            width: 100%; text-align: center; color: #b6a7c9; font-size: 15px;
+            letter-spacing: 1px; margin-top: auto; border-top: 1px solid var(--border);
+            background: var(--footer-bg); padding: 40px 0 30px 0;
+            box-shadow: 0 -2px 32px 0 #bd00ff11; position: relative; z-index: 2;
+        }
+
+        @media (max-width: 900px) {
+            .product-container { grid-template-columns: 1fr; margin-top: 120px; }
+            h1 { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">VANTAGE<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 20 20"><path d="M10 2 2 7v11h5v-5h6v5h5V7z"/></svg>
+                </span>Home
+            </a>
+            <a href="shop.html" class="active">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 20 20"><path d="M6.5 16a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM3 4h1l1.2 9.2A2 2 0 0 0 7.2 15h5.6a2 2 0 0 0 2-1.8L17 4H3zm2.2 9l-.9-7h10.4l-.9 7H5.2z"/></svg>
+                </span>Shop
+            </a>
+            <a href="https://discord.gg/6xkKuBtVB" class="btn-nav" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.2a.074.074 0 0 0-.079.037c-.34.607-.719 1.396-.984 2.013a18.524 18.524 0 0 0-5.614 0 12.51 12.51 0 0 0-.995-2.013.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.684 4.369a.069.069 0 0 0-.032.027C.533 9.09-.32 13.579.099 18.021a.08.08 0 0 0 .031.056c2.104 1.548 4.13 2.488 6.102 3.115a.077.077 0 0 0 .084-.027c.47-.646.889-1.329 1.248-2.049a.076.076 0 0 0-.041-.104c-.662-.251-1.292-.549-1.902-.892a.077.077 0 0 1-.008-.127c.128-.096.256-.197.378-.299a.074.074 0 0 1 .077-.01c3.993 1.826 8.285 1.826 12.242 0a.075.075 0 0 1 .078.009c.122.102.25.203.378.299a.077.077 0 0 1-.006.127 12.298 12.298 0 0 1-1.903.892.076.076 0 0 0-.04.105c.36.72.779 1.403 1.247 2.049a.076.076 0 0 0 .084.028c1.978-.627 4.004-1.567 6.107-3.115a.077.077 0 0 0 .03-.055c.5-5.177-.838-9.637-3.549-13.625a.061.061 0 0 0-.03-.028zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.175 1.094 2.157 2.418 0 1.334-.955 2.419-2.157 2.419zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.175 1.094 2.157 2.418 0 1.334-.947 2.419-2.157 2.419z"/></svg>
+                </span>Discord
+            </a>
+        </div>
+    </nav>
+
+    <div class="product-container">
+        <div class="image-gallery">
+            <div class="main-image"></div>
+            <div class="thumbnail-grid">
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>VANTAGE CROSSHAIR</h1>
+            <span class="price">$4.99</span>
+            <p class="description">
+                Stop sticking tape on your monitor. Vantage Crosshair is the undetectable overlay engine used by top-tier players. 
+                Design your own reticle, adjust opacity on the fly, and maintain perfect aim in games that remove crosshairs.
+            </p>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="icon-box">⚡</div>
+                    <div>
+                        <strong style="display:block; color:#fff">Zero Latency</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Consumes < 0.1% CPU usage.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box">🎨</div>
+                    <div>
+                        <strong style="display:block; color:#fff">Pixel Editor</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Draw pixel-by-pixel or use shapes.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box">🛡️</div>
+                    <div>
+                        <strong style="display:block; color:#fff">Stream Proof</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Hidden from OBS and Discord capture.</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_HERE" class="btn-buy">Buy License</a>
+            
+            <div style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted); opacity: 0.6;">
+                Instant Download • Secure Payment
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 Vantage Project. All Rights Reserved.</footer>
+
+    <script>
+        // Mouse follow effect matching your Home page
+        document.addEventListener('mousemove', e => {
+            document.body.style.setProperty('--x', e.clientX + 'px');
+            document.body.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
+</html>
