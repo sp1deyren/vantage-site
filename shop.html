@@ -7,21 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #BD00FF;
-            --accent2: #6B00B6;
-            --accent-glow: 0 0 32px 8px rgba(189, 0, 255, 0.25);
-            --bg: #0a0612;
+            --accent: #3A82F7;
+            --accent2: #1B1F3B;
+            --accent-glow: 0 0 24px 4px rgba(58, 130, 247, 0.18);
+            --bg: #10131a;
             --text: #fff;
-            --text-muted: #b6a7c9;
-            --card-bg: rgba(30, 10, 40, 0.7);
-            --border: rgba(189, 0, 255, 0.13);
-            --footer-bg: linear-gradient(90deg, #1a0b2e 0%, #2d0a3a 100%);
+            --text-muted: #b6b9c9;
+            --card-bg: rgba(24, 28, 43, 0.7);
+            --border: rgba(58, 130, 247, 0.10);
+            --footer-bg: linear-gradient(90deg, #181c2b 0%, #23273a 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
         body {
-            background: radial-gradient(circle at 50% 0%, #2d0a3a 0%, #0a0612 100%);
+            background: radial-gradient(circle at 50% 0%, #23273a 0%, #10131a 100%);
             color: var(--text);
             min-height: 100vh;
             display: flex; flex-direction: column;
@@ -33,7 +33,7 @@
             content: '';
             position: fixed;
             left: 0; top: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(189,0,255,0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(58,130,247,0.06) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
             transition: background 0.3s;
@@ -42,27 +42,27 @@
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 25px 50px; border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(20px); background: rgba(20,0,40,0.7);
+            backdrop-filter: blur(20px); background: rgba(24,28,43,0.85);
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            box-shadow: 0 4px 32px 0 rgba(189,0,255,0.07);
+            box-shadow: 0 4px 32px 0 rgba(58,130,247,0.05);
         }
 
         .logo { font-weight: 900; font-size: 32px; color: #fff; text-decoration: none; letter-spacing: 2px; text-shadow: 0 2px 16px #bd00ff33; }
-        .logo span { color: var(--accent); filter: drop-shadow(0 0 8px #bd00ff88); }
+        .logo span { color: var(--accent); filter: drop-shadow(0 0 8px #3A82F744); }
 
         .nav-links a {
             text-decoration: none; color: var(--text-muted); margin-left: 35px; 
             font-size: 16px; font-weight: 500; transition: 0.3s;
             border-radius: 8px; padding: 8px 18px;
         }
-        .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(189,0,255,0.08); text-shadow: 0 0 10px #bd00ff44; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(58,130,247,0.10); text-shadow: 0 0 10px #3A82F744; }
 
         .btn-nav {
             border: 1px solid var(--border); padding: 8px 20px; border-radius: 8px; color: #fff !important; text-decoration: none;
-            background: rgba(255,255,255,0.05); margin-left: 35px; font-weight: 700;
+            background: rgba(255,255,255,0.03); margin-left: 35px; font-weight: 700;
             transition: 0.2s;
         }
-        .btn-nav:hover { background: rgba(255,255,255,0.12); border-color: #fff; color: var(--accent) !important; }
+        .btn-nav:hover { background: rgba(58,130,247,0.10); border-color: #3A82F7; color: var(--accent) !important; }
 
         .shop-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;
@@ -79,22 +79,22 @@
             padding: 48px 36px 40px 36px;
             transition: 0.4s cubic-bezier(.4,2,.3,1);
             position: relative;
-            box-shadow: 0 8px 40px 0 rgba(189,0,255,0.10), 0 1.5px 0 0 var(--accent);
+            box-shadow: 0 8px 40px 0 rgba(58,130,247,0.10), 0 1.5px 0 0 var(--accent);
             backdrop-filter: blur(16px);
             text-align: left;
             overflow: hidden;
         }
         .product-card:hover {
             border-color: var(--accent);
-            background: rgba(189,0,255,0.07);
-            box-shadow: 0 8px 64px 0 rgba(189,0,255,0.18), 0 1.5px 0 0 var(--accent);
+            background: rgba(58,130,247,0.07);
+            box-shadow: 0 8px 64px 0 rgba(58,130,247,0.18), 0 1.5px 0 0 var(--accent);
             transform: scale(1.025) translateY(-6px);
         }
 
         .tag {
-            background: rgba(189,0,255,0.13); color: var(--accent); padding: 6px 16px;
+            background: rgba(58,130,247,0.13); color: var(--accent); padding: 6px 16px;
             border-radius: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase;
-            margin-bottom: 18px; display: inline-block; border: 1px solid rgba(189,0,255,0.22);
+            margin-bottom: 18px; display: inline-block; border: 1px solid rgba(58,130,247,0.22);
             letter-spacing: 1px;
         }
         .price {
@@ -103,14 +103,14 @@
             margin: 12px 0 10px 0;
             display: block;
             color: #fff;
-            text-shadow: 0 2px 16px #bd00ff33;
+            text-shadow: 0 2px 16px #3A82F733;
         }
         h2 {
             font-size: 26px;
             margin-bottom: 18px;
             color: var(--accent);
             letter-spacing: 1px;
-            text-shadow: 0 2px 12px #bd00ff22;
+            text-shadow: 0 2px 12px #3A82F722;
         }
         .desc {
             color: var(--text-muted);
@@ -120,7 +120,7 @@
             min-height: 40px;
         }
         ul {
-            color: #b6a7c9;
+            color: #b6b9c9;
             font-size: 15px;
             margin-bottom: 24px;
             padding-left: 22px;
@@ -132,7 +132,7 @@
             display: block;
             text-align: center;
             padding: 20px 0;
-            background: linear-gradient(90deg, #BD00FF 0%, #6B00B6 100%);
+            background: linear-gradient(90deg, #3A82F7 0%, #1B1F3B 100%);
             color: #fff;
             font-weight: 900;
             font-size: 17px;
@@ -148,21 +148,21 @@
         }
         .btn-buy:hover {
             transform: scale(1.07) translateY(-2px);
-            box-shadow: 0 0 60px 0 #BD00FF55;
+            box-shadow: 0 0 60px 0 #3A82F755;
             filter: brightness(1.15) saturate(1.2);
         }
 
         footer {
             width: 100%;
             text-align: center;
-            color: #b6a7c9;
+            color: #b6b9c9;
             font-size: 15px;
             letter-spacing: 1px;
             margin-top: auto;
             border-top: 1px solid var(--border);
             background: var(--footer-bg);
             padding: 40px 0 30px 0;
-            box-shadow: 0 -2px 32px 0 #bd00ff11;
+            box-shadow: 0 -2px 32px 0 #3A82F711;
             position: relative;
             z-index: 2;
         }
