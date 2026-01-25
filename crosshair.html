@@ -8,11 +8,8 @@
     <style>
         /* ICON UTILITY */
         .icon {
-            display: block;
-            margin: 0 auto;
-            height: 1.5em;
-            width: 1.5em;
-            fill: currentColor;
+            display: inline-block; vertical-align: middle; margin-right: 8px;
+            height: 1.2em; width: 1.2em; fill: currentColor;
         }
 
         /* THEME VARIABLES (MATCHING YOUR INDEX) */
@@ -113,19 +110,17 @@
         }
         .feature-item:hover { border-color: rgba(189,0,255,0.3); background: rgba(189,0,255,0.05); }
 
-        .icon-box {
-            width: 40px;
-            height: 40px;
-            background: rgba(189,0,255,0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 22px;
-            padding: 0;
+        .icon-box { 
+            width: 40px; height: 40px; background: rgba(189,0,255,0.1); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; margin-right: 15px;
+            color: var(--accent); font-weight: bold; font-size: 22px;
+        }
+        .icon-box .icon {
+            margin-right: 0;
+            display: block;
+            height: 1.5em;
+            width: 1.5em;
+        }
         }
 
         /* BUY BUTTON (MATCHING INDEX) */
@@ -192,8 +187,8 @@
             <h1>VANTAGE CROSSHAIR</h1>
             <span class="price">$4.99</span>
             <p class="description">
-                Stop sticking tape on your monitor. Vantage Crosshair is the undetectable overlay engine used by top-tier players. 
-                Design your own reticle, adjust opacity on the fly, and maintain perfect aim in games that remove crosshairs.
+                Vantage Crosshair is a lightweight, customizable overlay for gamers who want a better, more personal crosshair—no tape or stickers needed!<br><br>
+                <b>Fun fact:</b> Many players find that a smaller, well-designed crosshair can help improve aim and focus. Plus, it just looks awesome.
             </p>
 
             <div class="feature-list">
@@ -202,8 +197,8 @@
                         <svg class="icon" viewBox="0 0 20 20"><path d="M10 2v16m8-8H2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
                     </div>
                     <div>
-                        <strong style="display:block; color:#fff">Zero Latency</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Consumes less than 0.1% CPU usage.</span>
+                        <strong style="display:block; color:#fff">No Lag</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Runs ultra-smooth and won't slow down your PC or games—ever.</span>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -211,8 +206,8 @@
                         <svg class="icon" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
                     </div>
                     <div>
-                        <strong style="display:block; color:#fff">Pixel Editor</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Draw pixel-by-pixel or use shapes.</span>
+                        <strong style="display:block; color:#fff">Fully Customizable</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Design your crosshair pixel-by-pixel, use shapes, colors, and more. Make it truly yours.</span>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -220,8 +215,17 @@
                         <svg class="icon" viewBox="0 0 20 20"><path d="M4 4h12v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h6v6H7z" fill="currentColor"/></svg>
                     </div>
                     <div>
-                        <strong style="display:block; color:#fff">Stream Friendly</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">The crosshair overlay is not visible in most game capture/recording (when only the game is selected). Great for streaming and content creation!</span>
+                        <strong style="display:block; color:#fff">Stream & Record Friendly</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Your crosshair won't show up in most game captures or recordings (when only the game is selected). Perfect for content creators and streamers.</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0.001 16.001A8 8 0 0 0 10 2zm0 3a5 5 0 1 1 0 10A5 5 0 0 1 10 5z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="2" fill="currentColor"/></svg>
+                    </div>
+                    <div>
+                        <strong style="display:block; color:#fff">Looks Awesome</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">A clean, modern overlay that adds style to your setup—just pure gamer vibes.</span>
                     </div>
                 </div>
             </div>
