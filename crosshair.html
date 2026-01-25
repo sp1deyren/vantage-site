@@ -72,7 +72,11 @@
         .product-container {
             max-width: 1200px; margin: 160px auto 100px; padding: 0 40px;
             display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
-            align-items: start; position: relative; z-index: 1;
+            align-items: flex-start; position: relative; z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    gap: 0;
         }
 
         /* GALLERY (LEFT) */
@@ -102,7 +106,7 @@
         .price { font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 30px; display: block; text-shadow: 0 0 20px rgba(189,0,255,0.3); }
         .description { color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; font-size: 17px; font-weight: 300; }
 
-        .feature-list { margin-bottom: 40px; }
+        .feature-list { margin-bottom: 32px; margin-top: 10px; }
         .feature-item { 
             display: flex; align-items: center; margin-bottom: 15px; 
             padding: 15px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
@@ -126,15 +130,27 @@
         /* BUY BUTTON (MATCHING INDEX) */
         .btn-buy {
             background: linear-gradient(90deg, #BD00FF 0%, #2a2236 100%);
-            color: #fff; width: 100%; padding: 22px; border-radius: 14px;
-            text-decoration: none; font-weight: 900; font-size: 20px; text-align: center;
-            box-shadow: var(--accent-glow); display: block; letter-spacing: 2px;
+            color: #fff;
+            width: 100%;
+            padding: 22px 0;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 20px;
+            text-align: center;
+            box-shadow: var(--accent-glow);
+            display: block;
+            letter-spacing: 2px;
+            border: none;
+            outline: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
             transition: transform 0.18s, box-shadow 0.18s, filter 0.15s;
         }
         .btn-buy:hover {
-            transform: scale(1.02) translateY(-1px);
-            box-shadow: 0 0 30px 0 rgba(189,0,255,0.4);
-            filter: brightness(1.1);
+            transform: scale(1.03) translateY(-1px);
+            box-shadow: 0 0 24px 0 #bd00ff33;
+            filter: brightness(1.07) saturate(1.08);
         }
 
         footer {
@@ -232,7 +248,7 @@
 
             <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_HERE" class="btn-buy">Buy License</a>
             
-            <div style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted); opacity: 0.6;">
+            <div style="text-align: center; margin-top: 8px; font-size: 13px; color: var(--text-muted); opacity: 0.6;">
                 Instant Download • Secure Payment
             </div>
         </div>
