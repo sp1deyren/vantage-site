@@ -41,29 +41,10 @@
             text-decoration: none; color: var(--text-muted); margin-left: 35px; 
             font-size: 15px; font-weight: 500; transition: 0.3s;
         }
-        .nav-links a:hover, .nav-links a.active { color: #fff; text-shadow: 0 0 15px var(--accent-glow); }
-
-        .btn-nav {
-            border: 1px solid var(--border); padding: 10px 24px; border-radius: 8px;
-            background: rgba(255,255,255,0.03); color: #fff !important;
-        }
 
         .hero {
             height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center; padding: 0 20px;
-        }
-
-        .tag {
-            background: rgba(189,0,255,0.1); color: var(--accent); padding: 8px 16px; 
-            border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 1px;
-            margin-bottom: 30px; border: 1px solid rgba(189,0,255,0.2);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(189, 0, 255, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(189, 0, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(189, 0, 255, 0); }
         }
 
         h1 {
@@ -75,35 +56,40 @@
 
         .subtitle { color: var(--text-muted); font-size: 20px; max-width: 650px; margin-bottom: 45px; line-height: 1.6; font-weight: 300; }
 
+        /* FIXED BUTTON: ZOOMS FROM MIDDLE */
         .btn-primary {
             background: var(--accent); color: #fff; padding: 20px 55px; border-radius: 12px;
             text-decoration: none; font-weight: 700; font-size: 18px; 
-            box-shadow: 0 10px 40px var(--accent-glow); transition: 0.3s;
+            box-shadow: 0 10px 40px var(--accent-glow); 
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            display: inline-block;
+            transform: scale(1); /* Ensure it stays in place */
         }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 50px var(--accent-glow); filter: brightness(1.1); }
 
-        footer { text-align: center; padding: 40px; color: #333; font-size: 13px; border-top: 1px solid var(--border); margin-top: auto; }
+        .btn-primary:hover { 
+            transform: scale(1.1); /* Zooms out from center */
+            box-shadow: 0 15px 50px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        footer { text-align: center; padding: 40px; color: #333; font-size: 13px; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo">VANTAGE<span>.</span></a>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="shop.html">Shop</a>
-            <a href="#" target="_blank" class="btn-nav">Discord</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="tag">VANTAGE V1.0 IS LIVE</div>
         <h1>EVOLVE YOUR<br>PRECISION.</h1>
         <p class="subtitle">Experience the next generation of custom overlays and system optimizations designed for elite performance.</p>
         <a href="shop.html" class="btn-primary">Explore Shop</a>
     </header>
 
-    <footer>
-        © 2026 Vantage Project. All Rights Reserved.
-    </footer>
+    <footer>© 2026 Vantage Project. All Rights Reserved.</footer>
 </body>
 </html>
