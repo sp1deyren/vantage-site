@@ -47,34 +47,58 @@
             border-radius: 8px; padding: 8px 18px;
         }
         .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(189,0,255,0.08); text-shadow: 0 0 10px #bd00ff44; }
-        .main-content {
-            max-width: 700px; margin: 140px auto 40px auto; background: var(--card-bg); border-radius: 28px; box-shadow: 0 8px 40px 0 rgba(189,0,255,0.08);
-            padding: 48px 36px 40px 36px; text-align: left; position: relative; z-index: 1;
+        .btn-nav {
+            border: 1px solid var(--border); padding: 8px 20px; border-radius: 8px; color: #fff !important; text-decoration: none;
+            background: rgba(255,255,255,0.03); margin-left: 35px; font-weight: 700; transition: 0.2s;
         }
+        .btn-nav:hover { background: rgba(189,0,255,0.10); border-color: #BD00FF; color: var(--accent) !important; }
+        .product-container {
+            max-width: 1200px; margin: 160px auto 100px; padding: 0 40px;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px;
+            align-items: start; position: relative; z-index: 1;
+        }
+        .image-gallery { display: flex; flex-direction: column; gap: 20px; }
+        .main-image {
+            width: 100%; height: 400px; background: rgba(0,0,0,0.3); border-radius: 20px;
+            border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative; box-shadow: 0 4px 32px 0 rgba(0,0,0,0.2);
+        }
+        .main-image::after { content: 'Tweaks Preview'; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; }
+        .thumbnail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .thumb {
+            height: 100px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid var(--border);
+            cursor: pointer; transition: 0.3s;
+        }
+        .thumb:hover { border-color: var(--accent); box-shadow: 0 0 15px rgba(189,0,255,0.2); }
         h1 {
-            font-size: clamp(38px, 7vw, 70px); line-height: 1.05; font-weight: 900; letter-spacing: -2px;
+            font-size: 50px; line-height: 1; font-weight: 900; letter-spacing: -2px;
             background: linear-gradient(90deg, #fff 40%, #BD00FF 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 18px; text-shadow: 0 2px 32px #bd00ff22;
+            margin-bottom: 10px; text-shadow: 0 2px 32px #bd00ff22;
         }
-        .subtitle {
-            color: var(--text-muted); font-size: 22px; margin-bottom: 32px; font-weight: 300; text-shadow: 0 2px 16px #bd00ff11;
+        .price { font-size: 42px; font-weight: 900; color: var(--accent); margin-bottom: 30px; display: block; text-shadow: 0 0 20px rgba(189,0,255,0.3); }
+        .description { color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; font-size: 17px; font-weight: 300; text-shadow: 0 2px 16px #bd00ff11; }
+        .feature-item { 
+            display: flex; align-items: center; margin-bottom: 15px; 
+            padding: 15px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
+            transition: 0.3s;
         }
-        .feature-list {
-            color: #b6a7c9; font-size: 17px; margin-bottom: 32px; padding-left: 22px; line-height: 1.7;
+        .feature-item:hover { border-color: rgba(189,0,255,0.3); background: rgba(189,0,255,0.05); }
+        .icon-box { 
+            width: 40px; height: 40px; background: rgba(189,0,255,0.1); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; margin-right: 15px;
+            color: var(--accent);
         }
-        .info-box {
-            background: rgba(189,0,255,0.07); border-radius: 14px; padding: 18px 20px 12px 20px; color: var(--text-muted); font-size: 1.04em; margin-bottom: 24px;
-        }
-        .btn-primary {
+        .icon-box svg { width: 20px; height: 20px; }
+        .btn-buy {
             background: linear-gradient(90deg, #BD00FF 0%, #2a2236 100%);
-            color: #fff; padding: 20px 60px; border-radius: 16px;
-            text-decoration: none; font-weight: 900; font-size: 20px;
-            box-shadow: var(--accent-glow); display: inline-block; letter-spacing: 2px;
-            transition: transform 0.18s, box-shadow 0.18s, filter 0.15s;
-            border: none; outline: none;
+            color: #fff; width: 100%; padding: 22px; border-radius: 18px;
+            text-decoration: none; font-weight: 900; font-size: 22px; text-align: center;
+            box-shadow: var(--accent-glow); display: block; letter-spacing: 2px;
+            transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.18s, filter 0.15s;
+            border: none;
         }
-        .btn-primary:hover {
+        .btn-buy:hover {
             transform: scale(1.03) translateY(-1px);
             box-shadow: 0 0 24px 0 #bd00ff33;
             filter: brightness(1.07) saturate(1.08);
@@ -84,6 +108,10 @@
             letter-spacing: 1px; margin-top: auto; border-top: 1px solid var(--border);
             background: var(--footer-bg); padding: 40px 0 30px 0;
             box-shadow: 0 -2px 32px 0 #bd00ff11; position: relative; z-index: 2;
+        }
+        @media (max-width: 900px) {
+            .product-container { grid-template-columns: 1fr; margin-top: 120px; }
+            h1 { font-size: 40px; }
         }
     </style>
 </head>
@@ -96,7 +124,7 @@
                     <svg viewBox="0 0 20 20"><path d="M10 2 2 7v11h5v-5h6v5h5V7z"/></svg>
                 </span>Home
             </a>
-            <a href="shop.html">
+            <a href="shop.html" class="active">
                 <span class="icon" aria-hidden="true">
                     <svg viewBox="0 0 20 20"><path d="M6.5 16a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM3 4h1l1.2 9.2A2 2 0 0 0 7.2 15h5.6a2 2 0 0 0 2-1.8L17 4H3zm2.2 9l-.9-7h10.4l-.9 7H5.2z"/></svg>
                 </span>Shop
@@ -121,26 +149,26 @@
             <h1>VANTAGE TWEAKS</h1>
             <span class="price">$9.99</span>
             <p class="description">
-                Vantage Tweaks is a powerful optimization pack for Windows. Instantly apply registry, network, and system tweaks for lower latency, higher FPS, and a smoother gaming experience.<br><br>
-                <b>Note:</b> All tweaks are safe, reversible, and come with a step-by-step guide. Restore points are created automatically.
+                Vantage Tweaks is your all-in-one PC optimization toolkit. Instantly apply safe, proven tweaks to your system and network for lower latency, higher FPS, and a smoother gaming experience.<br><br>
+                <b>Why use Vantage Tweaks?</b> Most "optimization" guides are outdated or risky. Our pack is tested, reversible, and designed for gamers who want real results without the hassle.
             </p>
             <div class="feature-list">
                 <div class="feature-item">
                     <div class="icon-box">
-                        <svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M10 2v16m8-8H2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
                     </div>
                     <div>
-                        <strong style="display:block; color:#fff">Network Throttling Fix</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Removes Windows network bottlenecks for better hitreg and lower ping.</span>
+                        <strong style="display:block; color:#fff">Lower Input & Network Lag</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Registry and network tweaks for the fastest response times.</span>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="icon-box">
-                        <svg viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 7v6M7 10h6" stroke="currentColor" stroke-width="2"/></svg>
+                        <svg viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h6v6H7z" fill="currentColor"/></svg>
                     </div>
                     <div>
-                        <strong style="display:block; color:#fff">Mouse Input Latency Fix</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Optimizes input for the fastest possible mouse response.</span>
+                        <strong style="display:block; color:#fff">FPS & Stability Boost</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Exclusive configs to maximize your system's performance.</span>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -148,30 +176,18 @@
                         <svg viewBox="0 0 20 20"><path d="M4 4h12v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7h6v6H7z" fill="currentColor"/></svg>
                     </div>
                     <div>
-                        <strong style="display:block; color:#fff">FPS Boost Configs</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Applies registry and system tweaks for maximum performance.</span>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="icon-box">
-                        <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 6v4l3 3" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                    </div>
-                    <div>
-                        <strong style="display:block; color:#fff">Easy Restore Point</strong>
-                        <span style="font-size:13px; color:var(--text-muted)">Creates a Windows restore point before applying any changes.</span>
+                        <strong style="display:block; color:#fff">Safe & Reversible</strong>
+                        <span style="font-size:13px; color:var(--text-muted)">Restore your system to default with one click if needed.</span>
                     </div>
                 </div>
             </div>
-            <a href="https://buy.stripe.com/test_7sI4iQ2bV0A1b5KcMM" class="btn-buy">Buy License</a>
+            <a href="https://buy.stripe.com/test_7sI7uQ2bV0A1b5KcMM" class="btn-buy">Buy License</a>
             <div style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-muted); opacity: 0.6;">
                 Instant Download • Secure Payment
             </div>
         </div>
     </div>
-    <footer>
-        © 2026 Vantage Project. All Rights Reserved.<br>
-        <span style="opacity: 0.5; margin-top: 10px; display: block;">Secure Payments via Stripe.</span>
-    </footer>
+    <footer>© 2026 Vantage Project. All Rights Reserved.</footer>
     <script>
         document.addEventListener('mousemove', e => {
             document.body.style.setProperty('--x', e.clientX + 'px');
